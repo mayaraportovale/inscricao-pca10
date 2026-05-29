@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrição PCA-10 — Porto Vale Consórcios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-deep: #0B2A5C;
+      --blue-mid:  #1550A8;
+      --blue-bright: #2D7DD2;
+      --blue-light: #E8F1FB;
+      --gold: #C8972A;
+      --red: #C0392B;
+      --green: #1A7A4A;
+      --surface: #F5F7FA;
+      --white: #FFFFFF;
+      --text: #0B1829;
+      --text-muted: #5A6B82;
+      --border: #D0DAEA;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 24px rgba(11,42,92,0.10);
+      --shadow-sm: 0 2px 8px rgba(11,42,92,0.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--surface);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #0B2A5C;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 440px; height: 440px;
+      border-radius: 50%;
+      border: 55px solid rgba(45,125,210,0.15);
+      pointer-events: none;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      right: 20px; top: 20px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      border: 40px solid rgba(45,125,210,0.10);
+      pointer-events: none;
+    }
+    .header-wave3 {
+      position: absolute;
+      right: 100px; top: 80px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 28px solid rgba(45,125,210,0.07);
+      pointer-events: none;
+    }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1.75rem 1.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+    .pv-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.4rem;
+    }
+    .pv-logo-icon {
+      width: 38px; height: 38px;
+      background: white;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .pv-logo-icon svg { width: 26px; height: 26px; }
+    .pv-logo-text {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px; font-weight: 600;
+      color: white; line-height: 1.2;
+    }
+    .pv-logo-text small {
+      display: block;
+      font-size: 9px; font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .badge-abac {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(200,151,42,0.15);
+      border: 1px solid rgba(200,151,42,0.35);
+      border-radius: 99px;
+      padding: 3px 12px;
+      font-family: 'Sora', sans-serif;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #E2B44B;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+    .badge-abac::before { content: '◆'; font-size: 7px; }
+    header h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    header h1 span { color: #E2B44B; }
+    header p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      max-width: 480px;
+    }
+
+    /* ── PROGRESS ── */
+    .progress-shell {
+      background: rgba(255,255,255,0.08);
+      border-radius: 99px;
+      height: 4px;
+      margin-top: 1.25rem;
+      overflow: hidden;
+      max-width: 320px;
+    }
+    .progress-fill {
+      height: 4px;
+      background: linear-gradient(90deg, #E2B44B, #2D7DD2);
+      border-radius: 99px;
+      transition: width 0.5s cubic-bezier(.4,0,.2,1);
+      width: 25%;
+    }
+    .progress-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 6px;
+      font-family: 'Sora', sans-serif;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* ── SECTIONS ── */
+    .section { display: none; animation: fadeUp 0.35s ease; }
+    .section.active { display: block; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .card-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-title .icon { font-size: 18px; }
+
+    /* ── INFO BLOCKS ── */
+    .info-block {
+      border-left: 3px solid var(--blue-bright);
+      background: var(--blue-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.1rem;
+      margin-bottom: 0.75rem;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--blue-deep);
+    }
+    .info-block.warn {
+      border-color: var(--gold);
+      background: #FDF6E9;
+      color: #5C3D0A;
+    }
+    .info-block.danger {
+      border-color: var(--red);
+      background: #FDF0EF;
+      color: #5C0A0A;
+    }
+    .info-block strong {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    /* ── FORM FIELDS ── */
+    .field { margin-bottom: 1.25rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .field label .num {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue-bright);
+      background: var(--blue-light);
+      padding: 1px 7px;
+      border-radius: 99px;
+      margin-right: 6px;
+    }
+    .req { color: var(--red); margin-left: 2px; }
+    .field small {
+      display: block;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .field input[type="text"],
+    .field input[type="tel"],
+    .field input[type="email"],
+    .field select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .field input:focus, .field select:focus {
+      border-color: var(--blue-mid);
+      box-shadow: 0 0 0 3px rgba(21,80,168,0.10);
+    }
+    .field input.error-field { border-color: var(--red); }
+    .field-error {
+      font-size: 11.5px;
+      color: var(--red);
+      margin-top: 5px;
+      display: none;
+      align-items: center;
+      gap: 4px;
+    }
+    .field-error.show { display: flex; }
+    .field-error::before { content: '⚠'; font-size: 11px; }
+
+    /* radio */
+    .radio-group { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 4px; }
+    .radio-opt {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text);
+      padding: 8px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: all 0.18s;
+      user-select: none;
+    }
+    .radio-opt:has(input:checked) {
+      border-color: var(--blue-mid);
+      background: var(--blue-light);
+      color: var(--blue-deep);
+    }
+    .radio-opt input { accent-color: var(--blue-mid); width: 16px; height: 16px; }
+
+    /* ── FILE UPLOAD ── */
+    .file-upload-area {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--surface);
+      position: relative;
+    }
+    .file-upload-area:hover { border-color: var(--blue-bright); background: var(--blue-light); }
+    .file-upload-area.has-file { border-color: var(--green); background: #EAF7F0; }
+    .file-upload-area.drag-over { border-color: var(--blue-mid); background: var(--blue-light); transform: scale(1.01); }
+    .file-upload-area input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .upload-icon { font-size: 24px; margin-bottom: 6px; display: block; }
+    .upload-label { font-size: 13px; font-weight: 500; color: var(--blue-mid); }
+    .upload-sub { font-size: 11.5px; color: var(--text-muted); margin-top: 3px; }
+    .file-preview {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #EAF7F0;
+      border: 1px solid #A8DFC0;
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      font-size: 13px;
+      color: var(--green);
+      display: none;
+    }
+    .file-preview.show { display: flex; }
+    .file-preview .remove-file {
+      margin-left: auto;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--red);
+      font-size: 16px;
+      line-height: 1;
+      padding: 0 2px;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.75rem;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--blue-mid);
+      color: white;
+      box-shadow: 0 2px 12px rgba(21,80,168,0.25);
+    }
+    .btn-primary:hover { background: var(--blue-deep); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(21,80,168,0.3); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-secondary {
+      background: var(--white);
+      color: var(--text-muted);
+      border: 1.5px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--surface); color: var(--text); }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none !important; }
+
+    /* ── SPINNER ── */
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── SUCCESS ── */
+    .success-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .success-icon {
+      width: 72px; height: 72px;
+      background: #EAF7F0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 1.5rem;
+    }
+    .success-card h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      margin-bottom: 0.5rem;
+    }
+    .success-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue-light);
+      color: var(--blue-deep);
+      border-radius: 99px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+
+    /* ── LOADING OVERLAY ── */
+    #loading-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(11,26,41,0.55);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      backdrop-filter: blur(3px);
+    }
+    #loading-overlay.show { display: flex; }
+    .loading-box {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .loading-box p { font-size: 14px; color: var(--text-muted); margin-top: 0.75rem; }
+    .big-spinner {
+      width: 40px; height: 40px;
+      border: 3px solid var(--blue-light);
+      border-top-color: var(--blue-mid);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 540px) {
+      .header-inner { padding: 2rem 1.25rem 1.75rem; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .card { padding: 1.25rem; }
+      .btn-row { flex-direction: column-reverse; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-wave3"></div>
+  <div class="header-inner">
+    <div class="pv-logo">
+      <div class="pv-logo-icon">
+        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 21 L13 5 L22 21" stroke="#0B2A5C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 21 L13 12 L18 21" stroke="#1550A8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="pv-logo-text">
+        Porto Vale Consórcios
+        <small>Certificação ABAC · PCA-10</small>
+      </div>
+    </div>
+    <span class="badge-abac">Inscrição Oficial</span>
+    <h1>Inscrição <span>PCA-10</span></h1>
+    <p>Preencha com atenção. Todos os campos marcados com * são obrigatórios.</p>
+    <div class="progress-shell">
+      <div class="progress-fill" id="prog"></div>
+    </div>
+    <div class="progress-label" id="prog-label">Etapa 1 de 4 — Informações</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- SEÇÃO 1: INFORMAÇÕES -->
+  <div class="section active" id="sec1">
+    <div class="card">
+      <div class="card-title"><span class="icon">📋</span> Regras importantes</div>
+
+      <div class="info-block">
+        <strong>🏠 Home Office</strong>
+        No dia da prova, você trabalhará de casa. Não compareça à Porto Vale. A jornada de trabalho segue normal.
+      </div>
+
+      <div class="info-block warn">
+        <strong>⏱ Prazo</strong>
+        Você terá 90 dias corridos após a inscrição para realizar o exame. Após esse período, será necessário pagar nova taxa.
+      </div>
+
+      <div class="info-block danger">
+        <strong>⚠️ Importante — leia com atenção</strong>
+        Após a inscrição, o colaborador terá 90 dias corridos para realizar a certificação a partir do momento do cadastro.<br><br>
+        • O valor da prova é de <strong>R$ 90,00</strong>, descontado em folha no ato da inscrição.<br>
+        • São permitidas <strong>2 tentativas</strong> de prova.<br>
+        • Em caso de ausência, é obrigatório avisar com <strong>72h de antecedência</strong>. Caso contrário, perderá a tentativa.
+      </div>
+
+      <p style="font-size:12px;color:var(--text-muted);margin-top:0.5rem;font-style:italic">
+        ABAC – Associação Brasileira de Administradoras de Consórcios
+      </p>
+    </div>
+
+    <div class="btn-row">
+      <span></span>
+      <button class="btn btn-primary" onclick="goTo(2)">
+        Li e entendi — Avançar
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: DADOS PESSOAIS -->
+  <div class="section" id="sec2">
+    <div class="card">
+      <div class="card-title"><span class="icon">👤</span> Dados pessoais</div>
+
+      <div class="field">
+        <label><span class="num">1</span> Nome completo <span class="req">*</span></label>
+        <input type="text" id="f-nome" placeholder="Seu nome completo">
+        <div class="field-error" id="e-nome">Preencha seu nome completo</div>
+      </div>
+
+      <div class="field">
+        <label><span class="num">2</span> WhatsApp <span class="req">*</span></label>
+        <small>Formato: DDD + 9 + número &nbsp;—&nbsp; Ex: 12 9 8765-4321</small>
+        <input type="tel" id="f-wpp" placeholder="12 9 8765-4321" maxlength="16">
+        <div class="field-error" id="e-wpp">Preencha seu WhatsApp</div>
+      </div>
+
+      <div class="field">
+        <label><span class="num">3</span> CPF <span class="req">*</span></label>
+        <input type="text" id="f-cpf" placeholder="000.000.000-00" maxlength="14">
+        <div class="field-error" id="e-cpf">CPF inválido</div>
+      </div>
+
+      <div class="field">
+        <label><span class="num">4</span> Data de nascimento <span class="req">*</span></label>
+        <small>Formato: DD/MM/AAAA</small>
+        <input type="text" id="f-nasc" placeholder="00/00/0000" maxlength="10">
+        <div class="field-error" id="e-nasc">Data inválida</div>
+      </div>
+
+      <div class="field">
+        <label><span class="num">5</span> E-mail corporativo <span class="req">*</span></label>
+        <small>Ex: nome.sobrenome@portovaleconsorcios.com.br</small>
+        <input type="email" id="f-email" placeholder="nome.sobrenome@portovaleconsorcios.com.br">
+        <div class="field-error" id="e-email">E-mail inválido</div>
+      </div>
+
+      <div class="field">
+        <label><span class="num">6</span> Diretoria <span class="req">*</span></label>
+        <select id="f-dir">
+          <option value="">— Selecione sua diretoria —</option>
+          <option>ANJOS</option>
+          <option>ATENA</option>
+          <option>AYA</option>
+          <option>BELL BREAKERS</option>
+          <option>DIAMANTES</option>
+          <option>DUNAMIS</option>
+          <option>FÊNIX</option>
+          <option>GROOVE</option>
+          <option>QUIMERA</option>
+        </select>
+        <div class="field-error" id="e-dir">Selecione sua diretoria</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="goTo(1)">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        Voltar
+      </button>
+      <button class="btn btn-primary" onclick="goTo(3)">
+        Avançar
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3: DOCUMENTOS -->
+  <div class="section" id="sec3">
+    <div class="card">
+      <div class="card-title"><span class="icon">📎</span> Envios obrigatórios</div>
+
+      <div class="info-block danger" style="margin-bottom:1.25rem">
+        <strong>📱 Atenção</strong>
+        Os arquivos abaixo devem estar em <strong>formato JPG</strong> (não é aceito PDF para documentos de identidade e selfie).
+        Em caso de recertificação, o certificado deve ser enviado em <strong>PDF</strong>.
+      </div>
+
+      <!-- RG/CPF -->
+      <div class="field">
+        <label><span class="num">7</span> RG ou CNH (foto) <span class="req">*</span></label>
+        <small>Somente JPG ou JPEG — foto nítida dos dois lados</small>
+        <div class="file-upload-area" id="area-rg" ondragover="dragOver(event,'area-rg')" ondragleave="dragLeave('area-rg')" ondrop="dropFile(event,'rg')">
+          <input type="file" id="f-rg" accept=".jpg,.jpeg" onchange="handleFile('rg')">
+          <span class="upload-icon">🪪</span>
+          <div class="upload-label">Clique para selecionar ou arraste aqui</div>
+          <div class="upload-sub">JPG / JPEG · Tamanho máx. 5 MB</div>
+        </div>
+        <div class="file-preview" id="prev-rg">
+          <span>✅</span><span id="prev-rg-name"></span>
+          <button class="remove-file" onclick="removeFile('rg')" title="Remover">×</button>
+        </div>
+        <div class="field-error" id="e-rg">Selecione o documento de identidade</div>
+      </div>
+
+      <!-- SELFIE -->
+      <div class="field">
+        <label><span class="num">8</span> Foto de perfil (selfie) <span class="req">*</span></label>
+        <small>Somente JPG ou JPEG — foto frontal nítida, rosto visível</small>
+        <div class="file-upload-area" id="area-selfie" ondragover="dragOver(event,'area-selfie')" ondragleave="dragLeave('area-selfie')" ondrop="dropFile(event,'selfie')">
+          <input type="file" id="f-selfie" accept=".jpg,.jpeg" onchange="handleFile('selfie')">
+          <span class="upload-icon">🤳</span>
+          <div class="upload-label">Clique para selecionar ou arraste aqui</div>
+          <div class="upload-sub">JPG / JPEG · Tamanho máx. 5 MB</div>
+        </div>
+        <div class="file-preview" id="prev-selfie">
+          <span>✅</span><span id="prev-selfie-name"></span>
+          <button class="remove-file" onclick="removeFile('selfie')" title="Remover">×</button>
+        </div>
+        <div class="field-error" id="e-selfie">Selecione sua foto de perfil</div>
+      </div>
+
+      <!-- CERTIFICADO (opcional) -->
+      <div class="field">
+        <label><span class="num">9</span> Certificado anterior <span style="color:var(--text-muted);font-weight:400">(opcional — somente para recertificação)</span></label>
+        <small>PDF ou JPG · Tamanho máx. 10 MB</small>
+        <div class="file-upload-area" id="area-cert" ondragover="dragOver(event,'area-cert')" ondragleave="dragLeave('area-cert')" ondrop="dropFile(event,'cert')">
+          <input type="file" id="f-cert" accept=".pdf,.jpg,.jpeg" onchange="handleFile('cert')">
+          <span class="upload-icon">📜</span>
+          <div class="upload-label">Clique para selecionar ou arraste aqui</div>
+          <div class="upload-sub">PDF ou JPG · Apenas se for recertificação</div>
+        </div>
+        <div class="file-preview" id="prev-cert">
+          <span>✅</span><span id="prev-cert-name"></span>
+          <button class="remove-file" onclick="removeFile('cert')" title="Remover">×</button>
+        </div>
+      </div>
+
+      <!-- RECERTIFICAÇÃO -->
+      <div class="field">
+        <label><span class="num">10</span> É recertificação? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-opt">
+            <input type="radio" name="recert" value="SIM"> Sim
+          </label>
+          <label class="radio-opt">
+            <input type="radio" name="recert" value="NÃO"> Não
+          </label>
+        </div>
+        <div class="field-error" id="e-recert">Selecione uma opção</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="goTo(2)">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        Voltar
+      </button>
+      <button class="btn btn-primary" id="btn-submit" onclick="submitForm()">
+        <span id="btn-text">Enviar inscrição</span>
+        <div class="spinner" id="btn-spin"></div>
+        <svg id="btn-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 19-4-8-8-4 19-7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4: SUCESSO -->
+  <div class="section" id="sec4">
+    <div class="success-card">
+      <div class="success-icon">🎉</div>
+      <h2>Inscrição enviada com sucesso!</h2>
+      <p>Seus dados foram registrados e os documentos foram enviados com segurança.</p>
+      <p>Em breve entraremos em contato para darmos continuidade ao processo.</p>
+      <div class="contact-pill">📞 Dúvidas? May — +55 12 3600-2689</div>
+      <br><br>
+      <button class="btn btn-secondary" onclick="resetForm()">Fazer nova inscrição</button>
+    </div>
+  </div>
+
+</main>
+
+<div id="loading-overlay">
+  <div class="loading-box">
+    <div class="big-spinner"></div>
+    <p>Enviando sua inscrição…<br>Por favor, aguarde.</p>
+  </div>
+</div>
+
+<footer>
+  Porto Vale Consórcios &nbsp;·&nbsp; Certificação ABAC PCA-10 &nbsp;·&nbsp; Dados protegidos via HTTPS
+</footer>
+
+<script>
+  // ─────────────────────────────────────────────
+  // CONFIGURAÇÃO — substitua pela URL do seu Apps Script após o deploy
+  // ─────────────────────────────────────────────
+  const APPS_SCRIPT_URL = 'https://script.google.com/home/projects/1oSQk4m9gkbI87O_O3tvBjzHAu5Ohu-8qw8GZq814O6-kwIz4z8x0qLVn/edit';
+
+  // ─────────────────────────────────────────────
+  // PROGRESSO
+  // ─────────────────────────────────────────────
+  const steps = ['25%','50%','75%','100%'];
+  const labels = [
+    'Etapa 1 de 4 — Informações',
+    'Etapa 2 de 4 — Dados pessoais',
+    'Etapa 3 de 4 — Documentos',
+    'Etapa 4 de 4 — Concluído'
+  ];
+  let current = 1;
+
+  function goTo(n) {
+    if (n > current && !validate(current)) return;
+    document.getElementById('sec' + current).classList.remove('active');
+    current = n;
+    document.getElementById('sec' + n).classList.add('active');
+    document.getElementById('prog').style.width = steps[n-1];
+    document.getElementById('prog-label').textContent = labels[n-1];
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ─────────────────────────────────────────────
+  // MÁSCARAS
+  // ─────────────────────────────────────────────
+  document.getElementById('f-cpf').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'').slice(0,11);
+    if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/,'$1.$2.$3-$4');
+    else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d+)/,'$1.$2.$3');
+    else if (v.length > 3) v = v.replace(/(\d{3})(\d+)/,'$1.$2');
+    this.value = v;
+  });
+
+  document.getElementById('f-nasc').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'').slice(0,8);
+    if (v.length > 4) v = v.replace(/(\d{2})(\d{2})(\d+)/,'$1/$2/$3');
+    else if (v.length > 2) v = v.replace(/(\d{2})(\d+)/,'$1/$2');
+    this.value = v;
+  });
+
+  document.getElementById('f-wpp').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'').slice(0,11);
+    if (v.length > 7) v = v.replace(/(\d{2})(\d{1})(\d{4})(\d+)/,'$1 $2 $3-$4');
+    else if (v.length > 3) v = v.replace(/(\d{2})(\d+)/,'$1 $2');
+    this.value = v;
+  });
+
+  // ─────────────────────────────────────────────
+  // UPLOAD DE ARQUIVOS
+  // ─────────────────────────────────────────────
+  const files = { rg: null, selfie: null, cert: null };
+
+  function handleFile(key) {
+    const input = document.getElementById('f-' + key);
+    const file = input.files[0];
+    if (!file) return;
+
+    const maxMB = key === 'cert' ? 10 : 5;
+    if (file.size > maxMB * 1024 * 1024) {
+      alert('Arquivo muito grande. Tamanho máximo: ' + maxMB + ' MB.');
+      input.value = '';
+      return;
+    }
+
+    const allowed = key === 'cert' ? ['image/jpeg','application/pdf'] : ['image/jpeg'];
+    if (!allowed.includes(file.type)) {
+      alert(key === 'cert' ? 'Somente PDF ou JPG são aceitos.' : 'Somente arquivos JPG/JPEG são aceitos.');
+      input.value = '';
+      return;
+    }
+
+    files[key] = file;
+    const area = document.getElementById('area-' + key);
+    area.classList.add('has-file');
+    const prev = document.getElementById('prev-' + key);
+    prev.classList.add('show');
+    document.getElementById('prev-' + key + '-name').textContent = file.name;
+    const err = document.getElementById('e-' + key);
+    if (err) err.classList.remove('show');
+  }
+
+  function removeFile(key) {
+    files[key] = null;
+    document.getElementById('f-' + key).value = '';
+    document.getElementById('area-' + key).classList.remove('has-file');
+    document.getElementById('prev-' + key).classList.remove('show');
+  }
+
+  function dragOver(e, areaId) {
+    e.preventDefault();
+    document.getElementById(areaId).classList.add('drag-over');
+  }
+
+  function dragLeave(areaId) {
+    document.getElementById(areaId).classList.remove('drag-over');
+  }
+
+  function dropFile(e, key) {
+    e.preventDefault();
+    const areaId = 'area-' + key;
+    document.getElementById(areaId).classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    // Simula seleção via input
+    const dt = new DataTransfer();
+    dt.items.add(file);
+    document.getElementById('f-' + key).files = dt.files;
+    handleFile(key);
+  }
+
+  // ─────────────────────────────────────────────
+  // VALIDAÇÃO
+  // ─────────────────────────────────────────────
+  function showErr(id, show) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('show', show);
+    const inputId = id.replace('e-','f-');
+    const inp = document.getElementById(inputId);
+    if (inp) inp.classList.toggle('error-field', show);
+  }
+
+  function validate(sec) {
+    if (sec === 1) return true;
+
+    if (sec === 2) {
+      let ok = true;
+      const nome = document.getElementById('f-nome').value.trim();
+      const wpp  = document.getElementById('f-wpp').value.trim();
+      const cpf  = document.getElementById('f-cpf').value.trim();
+      const nasc = document.getElementById('f-nasc').value.trim();
+      const email= document.getElementById('f-email').value.trim();
+      const dir  = document.getElementById('f-dir').value;
+
+      showErr('e-nome',  !nome);
+      showErr('e-wpp',   wpp.length < 12);
+      showErr('e-cpf',   cpf.length < 14);
+      showErr('e-nasc',  nasc.length < 10);
+      showErr('e-email', !email.includes('@') || !email.includes('.'));
+      showErr('e-dir',   !dir);
+
+      if (!nome || wpp.length<12 || cpf.length<14 || nasc.length<10 || !email.includes('@') || !dir) ok = false;
+      return ok;
+    }
+
+    if (sec === 3) {
+      let ok = true;
+      const recert = document.querySelector('input[name="recert"]:checked');
+      showErr('e-rg',     !files.rg);
+      showErr('e-selfie', !files.selfie);
+      showErr('e-recert', !recert);
+      if (!files.rg || !files.selfie || !recert) ok = false;
+      return ok;
+    }
+
+    return true;
+  }
+
+  // ─────────────────────────────────────────────
+  // CONVERSÃO BASE64
+  // ─────────────────────────────────────────────
+  function toBase64(file) {
+    return new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = () => res(r.result.split(',')[1]);
+      r.onerror = () => rej(new Error('Erro ao ler arquivo'));
+      r.readAsDataURL(file);
+    });
+  }
+
+  // ─────────────────────────────────────────────
+  // ENVIO
+  // ─────────────────────────────────────────────
+  async function submitForm() {
+    if (!validate(3)) return;
+
+    const btn = document.getElementById('btn-submit');
+    const overlay = document.getElementById('loading-overlay');
+    btn.disabled = true;
+    document.getElementById('btn-spin').style.display = 'block';
+    document.getElementById('btn-icon').style.display = 'none';
+    document.getElementById('btn-text').textContent = 'Enviando…';
+    overlay.classList.add('show');
+
+    try {
+      const rgBase64     = await toBase64(files.rg);
+      const selfieBase64 = await toBase64(files.selfie);
+      const certBase64   = files.cert ? await toBase64(files.cert) : null;
+
+      const payload = {
+        nome:         document.getElementById('f-nome').value.trim(),
+        wpp:          document.getElementById('f-wpp').value.trim(),
+        cpf:          document.getElementById('f-cpf').value.trim(),
+        nascimento:   document.getElementById('f-nasc').value.trim(),
+        email:        document.getElementById('f-email').value.trim(),
+        diretoria:    document.getElementById('f-dir').value,
+        recertificacao: document.querySelector('input[name="recert"]:checked').value,
+        rg: {
+          base64: rgBase64,
+          name:   files.rg.name,
+          type:   files.rg.type
+        },
+        selfie: {
+          base64: selfieBase64,
+          name:   files.selfie.name,
+          type:   files.selfie.type
+        },
+        cert: certBase64 ? {
+          base64: certBase64,
+          name:   files.cert.name,
+          type:   files.cert.type
+        } : null
+      };
+
+      const resp = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+
+      const result = await resp.json();
+
+      if (result.status === 'ok') {
+        overlay.classList.remove('show');
+        goTo(4);
+      } else {
+        throw new Error(result.message || 'Erro desconhecido');
+      }
+
+    } catch (err) {
+      overlay.classList.remove('show');
+      alert('❌ Erro ao enviar: ' + err.message + '\n\nVerifique sua conexão e tente novamente. Se o problema persistir, entre em contato com May.');
+      btn.disabled = false;
+      document.getElementById('btn-spin').style.display = 'none';
+      document.getElementById('btn-icon').style.display = 'block';
+      document.getElementById('btn-text').textContent = 'Enviar inscrição';
+    }
+  }
+
+  // ─────────────────────────────────────────────
+  // RESET
+  // ─────────────────────────────────────────────
+  function resetForm() {
+    ['f-nome','f-wpp','f-cpf','f-nasc','f-email'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-dir').value = '';
+    document.querySelectorAll('input[name="recert"]').forEach(r => r.checked = false);
+    ['rg','selfie','cert'].forEach(k => removeFile(k));
+    const btn = document.getElementById('btn-submit');
+    btn.disabled = false;
+    document.getElementById('btn-spin').style.display = 'none';
+    document.getElementById('btn-icon').style.display = 'block';
+    document.getElementById('btn-text').textContent = 'Enviar inscrição';
+    current = 1;
+    goTo(1);
+  }
+</script>
+</body>
+</html>
